@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing and Revenue Management | Woxsen University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #005599;
+            --accent-color: #0077cc;
+            --light-bg: #f9f9f9;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --text-light: #666666;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .nav a i {
+            font-size: 1rem;
+        }
+        
+        .instructor-info {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--accent-color);
+        }
+        
+        .module {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .module:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+        }
+        
+        tr:nth-child(even) {
+            background-color: rgba(0, 85, 153, 0.05);
+        }
+        
+        tr:hover {
+            background-color: rgba(0, 85, 153, 0.1);
+        }
+        
+        .footer {
+            margin-top: 3rem;
+            padding: 2rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+        }
+        
+        .appendix {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--accent-color);
+        }
+        
+        .appendix h3 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .rubric-table {
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+        
+        .rubric-table table {
+            min-width: 800px;
+        }
+        
+        .tab-container {
+            margin: 2rem 0;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-light);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn.active {
+            color: var(--primary-color);
+        }
+        
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 1.5rem 0;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .accordion {
+            margin: 1rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .accordion-header {
+            padding: 1rem 1.5rem;
+            background-color: var(--card-bg);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        
+        .accordion-header:hover {
+            background-color: rgba(0, 85, 153, 0.05);
+        }
+        
+        .accordion-header i {
+            transition: transform 0.3s ease;
+        }
+        
+        .accordion-header.active i {
+            transform: rotate(180deg);
+        }
+        
+        .accordion-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background-color: var(--card-bg);
+        }
+        
+        .accordion-content.active {
+            padding: 1rem 1.5rem;
+            max-height: 1000px;
+        }
+        
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .industry-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        
+        .industry-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .industry-card i {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0, 85, 153, 0.3);
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 85, 153, 0.4);
+        }
+        
+        .back-to-top {
+            display: none;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0.5rem 0;
+        }
+        
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .course-objectives {
+            margin: 2rem 0;
+        }
+        
+        .objective-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .objective-icon {
+            background-color: rgba(0, 119, 204, 0.1);
+            color: var(--accent-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .search-container {
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding-left: 3rem;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.2);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+        
+        .highlight {
+            background-color: #fffde7;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .nav {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .nav a {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Pricing and Revenue Management</h1>
+            <h2>Course Code: 25BP04MJC2-O | Term IV | MBA 2024-26</h2>
+            
+            <div class="nav">
+                <a href="#overview"><i class="fas fa-info-circle"></i> Course Overview</a>
+                <a href="#outcomes"><i class="fas fa-bullseye"></i> Learning Outcomes</a>
+                <a href="#sessions"><i class="fas fa-calendar-alt"></i> Session Plan</a>
+                <a href="#evaluation"><i class="fas fa-clipboard-check"></i> Evaluation</a>
+                <a href="#appendices"><i class="fas fa-paperclip"></i> Appendices</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="overview" class="module">
+            <h2><i class="fas fa-info-circle"></i> Course Overview</h2>
+            
+            <div class="instructor-info">
+                <h3><i class="fas fa-chalkboard-teacher"></i> Instructor Information</h3>
+                <p><strong><i class="fas fa-user"></i> Instructor:</strong> Dr. Sujit Singh</p>
+                <p><strong><i class="fas fa-university"></i> Affiliation:</strong> School of Business</p>
+                <p><strong><i class="fas fa-envelope"></i> Email:</strong> sujit.singh@woxsen.edu.in</p>
+                <p><strong><i class="fas fa-map-marker-alt"></i> University Contact:</strong> Plot # 1267, Gateway Jubilee Road # 36, Jubilee Hills, Hyderabad – 500033 India</p>
+                <p><strong><i class="fas fa-phone"></i> Phone:</strong> 040 4444 8888 | <strong><i class="fas fa-globe"></i> Website:</strong> www.woxsen.edu.in</p>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <i class="fas fa-clock"></i>
+                    <div class="stat-number">30</div>
+                    <div class="stat-label">Total Hours</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-book"></i>
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Core Textbooks</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-tasks"></i>
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Key Projects</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-industry"></i>
+                    <div class="stat-number">6+</div>
+                    <div class="stat-label">Industries Covered</div>
+                </div>
+            </div>
+
+            <div class="course-objectives">
+                <h3><i class="fas fa-bullseye"></i> Course Objectives</h3>
+                
+                <div class="objective-item">
+                    <div class="objective-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div>
+                        <h4>Introduce Theory and Practice</h4>
+                        <p>To introduce the theory and the practice of revenue management and pricing.</p>
+                    </div>
+                </div>
+                
+                <div class="objective-item">
+                    <div class="objective-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <h4>Identify Optimization Opportunities</h4>
+                        <p>To identify opportunities for revenue optimization in different business contexts.</p>
+                    </div>
+                </div>
+                
+                <div class="objective-item">
+                    <div class="objective-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div>
+                        <h4>Develop Data-Driven Models</h4>
+                        <p>To develop quantitative data-driven models and their implementations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3><i class="fas fa-file-alt"></i> Brief Description and Relevance of the Course</h3>
+            <p>To maximize performance and profitability, businesses should manage their production capacity, resources, and product availability policies across a variety of selling channels. This is what Pricing and Revenue Management (PRM) focuses on. Selling the right product to the right consumer at the right time for the right price has been clearly stated as the main objective of revenue management. Companies supplying seasonal or perishable goods in unstable or shifting markets can benefit greatly from PRM.</p>
+            
+            <h4><i class="fas fa-industry"></i> Industries Using PRM</h4>
+            <div class="industry-grid">
+                <div class="industry-card">
+                    <i class="fas fa-plane"></i>
+                    <h4>Travel</h4>
+                    <p>Airlines, trains, rental cars</p>
+                </div>
+                <div class="industry-card">
+                    <i class="fas fa-hotel"></i>
+                    <h4>Hospitality</h4>
+                    <p>Hotels, cruise lines, casinos</p>
+                </div>
+                <div class="industry-card">
+                    <i class="fas fa-shopping-bag"></i>
+                    <h4>Retail</h4>
+                    <p>Clothing, consumer products</p>
+                </div>
+                <div class="industry-card">
+                    <i class="fas fa-hospital"></i>
+                    <h4>Healthcare</h4>
+                    <p>Clinics and hospitals</p>
+                </div>
+                <div class="industry-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h4>Financial Services</h4>
+                    <p>Banking and insurance</p>
+                </div>
+                <div class="industry-card">
+                    <i class="fas fa-industry"></i>
+                    <h4>Manufacturing</h4>
+                    <p>Made-to-order production</p>
+                </div>
+            </div>
+            
+            <p>The theory and application of revenue management and pricing are both introduced in this course. Fundamentally, revenue management is an applied discipline, and the success it has in the business world is what gives it value. The technical aspects of the topic merit careful consideration, and it also includes strong characteristics of applied science. This course aims to cover both these practical and theoretical components.</p>
+            
+            <div class="accordion">
+                <div class="accordion-header">
+                    <span><i class="fas fa-book"></i> Course Textbooks & References</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Textbook/Article/Report Name/Cases</th>
+                                <th>Edition/Year</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>T1</td>
+                                <td>Phillips, R.L., Pricing and Revenue Optimization, Stanford University Press, Stanford, USA</td>
+                                <td>2005</td>
+                            </tr>
+                            <tr>
+                                <td>T2</td>
+                                <td>Talluri, K. and G. J. van Ryzin, The Theory and Practice of Revenue Management, Kluwer, Amsterdam</td>
+                                <td>2002</td>
+                            </tr>
+                            <tr>
+                                <td>T3</td>
+                                <td>Nagle, T.T., The Strategy and Tactics of Pricing, Prentice Hall</td>
+                                <td>2005</td>
+                            </tr>
+                            <tr>
+                                <td>A1</td>
+                                <td>Sharp, B., & Dawes, J. (2001). What is differentiation and how does it work? Journal of Marketing Management, 17(7-8), 739-759.</td>
+                                <td>2001</td>
+                            </tr>
+                            <tr>
+                                <td>A2</td>
+                                <td>Shen, W., Duenyas, I., & Kapuscinski, R. (2014). Optimal pricing, production, and inventory for new product diffusion under supply constraints. Manufacturing & Service Operations Management, 16(1), 28-45.</td>
+                                <td>2014</td>
+                            </tr>
+                            <tr>
+                                <td>A3</td>
+                                <td>Chiang, W. C., Chen, J. C., & Xu, X. (2007). An overview of research on revenue management: current issues and future research. International journal of revenue management, 1(1), 97-128.</td>
+                                <td>2007</td>
+                            </tr>
+                            <tr>
+                                <td>A4</td>
+                                <td>de Boer, S. V., Freling, R., & Piersma, N. (2002). Mathematical programming for network revenue management revisited. European Journal of Operational Research, 137(1), 72-92.</td>
+                                <td>2002</td>
+                            </tr>
+                            <tr>
+                                <td>A5</td>
+                                <td>Subramanian, J., Stidham Jr, S., & Lautenbacher, C. J. (1999). Airline yield management with overbooking, cancellations, and no-shows. Transportation science, 33(2), 147-167.</td>
+                                <td>1999</td>
+                            </tr>
+                            <tr>
+                                <td>A6</td>
+                                <td>Shen, Z. J. M., & Su, X. (2007). Customer behavior modeling in revenue management and auctions: A review and new research opportunities. Production and operations management, 16(6), 713-728.</td>
+                                <td>2007</td>
+                            </tr>
+                            <tr>
+                                <td>C1</td>
+                                <td>Dhebar, A. S., & Brandenburger, A. (1993). American Airlines, Inc: Revenue Management. Harvard Business School.</td>
+                                <td>1993</td>
+                            </tr>
+                            <tr>
+                                <td>C2</td>
+                                <td>Benjamin Edelman & Jenny Sanford, (2017). David Dao on United Airlines by Harvard Business School publishing</td>
+                                <td>2017</td>
+                            </tr>
+                            <tr>
+                                <td>C3</td>
+                                <td>Aradhna Krishna. (2022) When is Pricing Unethical? Pharmaceuticals, Rideshares, Soft Drinks, and Travel, Harvard Business School Publishing</td>
+                                <td>2022</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="outcomes" class="module">
+            <h2><i class="fas fa-bullseye"></i> Course Intended Learning Outcomes (CILO)</h2>
+            <p>At the end of the course, students will be able to:</p>
+            
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="cilo1">CILO 1</button>
+                    <button class="tab-btn" data-tab="cilo2">CILO 2</button>
+                    <button class="tab-btn" data-tab="cilo3">CILO 3</button>
+                </div>
+                
+                <div class="tab-content active" id="cilo1">
+                    <h3>To understand the basic concepts of revenue management and pricing techniques.</h3>
+                    <p><strong>Mapping to Programme:</strong> Customer Centricity, Data Orientation</p>
+                    <p><strong>Degree of Emphasis:</strong> Introduce</p>
+                    
+                    <div class="rubric-table">
+                        <h4>Assessment Rubric</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Performance Standards</th>
+                                    <th>Exceeds Expectations (>80)</th>
+                                    <th>Meets Expectations (55-79)</th>
+                                    <th>Does not Meet Expectations (<55)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Student understands the Concept of pricing and pricing strategies</td>
+                                    <td>Students can compute from data, the optimized price using different strategies</td>
+                                    <td>Students have good understanding of different pricing strategies</td>
+                                    <td>Students have superficial understanding of Pricing and pricing strategies</td>
+                                </tr>
+                                <tr>
+                                    <td>Student understands the importance of Revenue Management</td>
+                                    <td>Students have a in-depth understanding of various tools and techniques of Revenue Management</td>
+                                    <td>Students understand Tools of Revenue Management</td>
+                                    <td>Students know superficially about revenue management</td>
+                                </tr>
+                                <tr>
+                                    <td>Student can apply concepts of PRM in business decisions</td>
+                                    <td>Students demonstrate in-depth application of knowledge</td>
+                                    <td>Students demonstrate fair application of knowledge</td>
+                                    <td>Students demonstrate superficial application of knowledge.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="cilo2">
+                    <h3>To examine dynamic pricing with replenish model -Linear Models</h3>
+                    <p><strong>Mapping to Programme:</strong> Data Orientation, Planning</p>
+                    <p><strong>Degree of Emphasis:</strong> Analyze</p>
+                    
+                    <div class="rubric-table">
+                        <h4>Assessment Rubric</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Performance Standards</th>
+                                    <th>Exceeds Expectations (>80)</th>
+                                    <th>Meets Expectations (55-79)</th>
+                                    <th>Does not Meet Expectations (<55)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Student understands the basic concepts of dynamic pricing</td>
+                                    <td>Students have extensive understanding of dynamic pricing and can link the same with practice</td>
+                                    <td>Students have good understanding of dynamic pricing</td>
+                                    <td>Students have superficial understanding of dynamic pricing</td>
+                                </tr>
+                                <tr>
+                                    <td>Student understands the basic concepts of Linear models</td>
+                                    <td>Students have extensive understanding of concepts of linear models</td>
+                                    <td>Students have good understanding of concepts of linear models</td>
+                                    <td>Students have superficial understanding of concepts of linear models</td>
+                                </tr>
+                                <tr>
+                                    <td>Student can apply concepts of dynamic pricing in simulated environment</td>
+                                    <td>Students demonstrate in depth knowledge of concepts of dynamic pricing in simulated environment</td>
+                                    <td>Students demonstrate good knowledge of concepts of dynamic pricing.</td>
+                                    <td>Students demonstrate superficial application of dynamic pricing but unable to apply in simulated environment</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="cilo3">
+                    <h3>To construct and solve pricing and revenue management decision models.</h3>
+                    <p><strong>Mapping to Programme:</strong> Data Orientation, Planning and Execution</p>
+                    <p><strong>Degree of Emphasis:</strong> Apply</p>
+                    
+                    <div class="rubric-table">
+                        <h4>Assessment Rubric</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Performance Standards</th>
+                                    <th>Exceeds Expectations (>80)</th>
+                                    <th>Meets Expectations (55-79)</th>
+                                    <th>Does not Meet Expectations (<55)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Student understands the basic concepts of revenue optimization</td>
+                                    <td>Students have extensive understanding of revenue optimization and can link the same with practice</td>
+                                    <td>Students have good understanding of revenue optimization</td>
+                                    <td>Students have superficial understanding of revenue optimization</td>
+                                </tr>
+                                <tr>
+                                    <td>Students are able to formulate (create) the pricing model</td>
+                                    <td>Students can formulate the problem and represent into a mathematical model with appropriate assumptions</td>
+                                    <td>Students can identify and formulate the pricing problems</td>
+                                    <td>Students is unable to formulate the pricing problems.</td>
+                                </tr>
+                                <tr>
+                                    <td>Student can optimize the revenue using appropriate technique.</td>
+                                    <td>Students demonstrate in-depth knowledge of using different types of tools for revenue optimization</td>
+                                    <td>Students demonstrate good knowledge of concepts of using different types of tools for revenue optimization</td>
+                                    <td>Students demonstrate superficial application of knowledge using different types of tools for revenue optimization</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sessions" class="module">
+            <h2><i class="fas fa-calendar-alt"></i> Session-Wise Topics and Reading/References</h2>
+            
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Search sessions by topic, learning outcome, or reference...">
+            </div>
+            
+            <table id="sessions-table">
+                <thead>
+                    <tr>
+                        <th>Session</th>
+                        <th>Topic</th>
+                        <th>Intended Learning Outcomes</th>
+                        <th>Pedagogy</th>
+                        <th>Reading/Reference</th>
+                        <th>CILO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Introduction to pricing and revenue management</td>
+                        <td>Understand the relevance of PRM; Identify its core objectives and application areas.</td>
+                        <td>Lecture, Discussion</td>
+                        <td>T1, Chapter 1-2</td>
+                        <td>CILO 1, 3</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Pricing Strategies & Challenges</td>
+                        <td>Differentiate various pricing strategies; Analyze common challenges in pricing.</td>
+                        <td>Lecture, Discussion</td>
+                        <td>T1 (Ch. 1-2)</td>
+                        <td>CILO 1</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Price-Response Functions & Sensitivity</td>
+                        <td>Understand price-response functions and measures of price sensitivity (elasticity, Van Westendrop).</td>
+                        <td>Hands-on activity</td>
+                        <td>T1 (Ch. 3)</td>
+                        <td>CILO 1</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Practical: Price Optimization & Analytics</td>
+                        <td>Apply price optimization techniques; Analyze price response data.</td>
+                        <td>Practical Exercises</td>
+                        <td>T1 (Ch. 3)</td>
+                        <td>CILO 3</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Dynamic Pricing Concepts & Models</td>
+                        <td>Explore concepts of dynamic pricing; Understand theoretical models.</td>
+                        <td>Lecture, Discussion</td>
+                        <td>T1 (Ch. 7)</td>
+                        <td>CILO 2</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Practical: Dynamic Pricing Simulation 1</td>
+                        <td>Simulate dynamic pricing scenarios; Make real-time pricing decisions.</td>
+                        <td>Simulation Exercise</td>
+                        <td>T1 (Ch. 7)</td>
+                        <td>CILO 3</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Economics & Limitations of Price Differentiation</td>
+                        <td>Understand economic principles of price differentiation; Identify practical limitations.</td>
+                        <td>Lecture, Discussion</td>
+                        <td>T1 (Ch. 4), A1</td>
+                        <td>CILO 2</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Practical: Price Differentiation Calculations & Examples</td>
+                        <td>Calculate differentiated prices; Analyze volume discounts.</td>
+                        <td>Practical Exercise, Case Study</td>
+                        <td>T1 (Ch. 4), A1</td>
+                        <td>CILO 2, 3</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Market Segmentation for Pricing</td>
+                        <td>Explore techniques for market segmentation relevant to pricing; Understand consumer welfare.</td>
+                        <td>Lecture, Discussion</td>
+                        <td>T1 (Ch. 4)</td>
+                        <td>CILO 1, 2</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Practical: Customer Segmentation Analysis for Pricing</td>
+                        <td>Analyze customer data to identify pricing segments; Develop targeted pricing strategies.</td>
+                        <td>Data Analysis, Group Activity</td>
+                        <td>T1 (Ch. 4)</td>
+                        <td>CILO 2, 3</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Foundations of Revenue Management & Forecasting</td>
+                        <td>Grasp fundamentals of revenue management; Understand forecasting techniques for demand.</td>
+                        <td>Lecture, Discussion</td>
+                        <td>T1 (Ch. 7)</td>
+                        <td>CILO 1</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Capacity Allocation: Littlewood's Rule & Newsvendor</td>
+                        <td>Learn different capacity allocation methods; Apply Littlewood's rule and Newsvendor problem.</td>
+                        <td>Lecture, Problem Solving</td>
+                        <td>T1, Chapter 10</td>
+                        <td>CILO 2</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>Practical: Single-Leg Revenue Management Problems</td>
+                        <td>Solve single-leg RM problems using decision trees and other methods.</td>
+                        <td>Problem Solving, Practical Exercise</td>
+                        <td>T1, Chapter 11</td>
+                        <td>CILO 3</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>Network Revenue Management & Bid Pricing</td>
+                        <td>Understand network revenue management; Learn bid pricing strategies.</td>
+                        <td>Lecture, Discussion</td>
+                        <td>T1, Chapter 12 A6</td>
+                        <td>CILO 2</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>Practical: Network Revenue Management Case Study</td>
+                        <td>Analyze and solve complex network RM problems; Apply linear programming approach.</td>
+                        <td>Case Study, Practical Exercise</td>
+                        <td>T1 (Ch. 8), A4</td>
+                        <td>CILO 3</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>Overbooking & No-Shows in Revenue Management</td>
+                        <td>Strategies for overbooking and managing no-shows.</td>
+                        <td>Lecture, Discussion</td>
+                        <td>A5</td>
+                        <td>CILO 2</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>Practical: Revenue Management Simulation 2</td>
+                        <td>Engage in advanced RM simulations; Optimize revenue across various scenarios.</td>
+                        <td>Simulation Exercise</td>
+                        <td>T1 (Ch. 7, 8)</td>
+                        <td>CILO 3</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>Revenue Management in Specific Industries</td>
+                        <td>Examine the application of RM philosophies in diverse sectors (e.g., retail, healthcare)</td>
+                        <td>Lecture, Industry Examples</td>
+                        <td>A3</td>
+                        <td>CILO 2</td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td>Practical: Pricing & Revenue Management Software/Tools Demo</td>
+                        <td>Explore functionalities of PRM software; Understand data-driven decision tools</td>
+                        <td>Software Demonstration, Interactive Session</td>
+                        <td>--</td>
+                        <td>CILO 1, 3</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>Guest Lecture / Emerging Trends in PRM</td>
+                        <td>Gain insights from industry experts on current challenges and future directions in PRM.</td>
+                        <td>Guest Speaker, Discussion</td>
+                        <td>Current articles</td>
+                        <td>CILO 1, 2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="evaluation" class="module">
+            <h2><i class="fas fa-clipboard-check"></i> Performance Evaluation Scheme</h2>
+            
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="continuous">Continuous Evaluation</button>
+                    <button class="tab-btn" data-tab="endterm">End Term Exam</button>
+                </div>
+                
+                <div class="tab-content active" id="continuous">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Session No.</th>
+                                <th>Marks</th>
+                                <th>Evaluation Form</th>
+                                <th>CILO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>5</td>
+                                <td>10</td>
+                                <td>Case Discussion- Groupon; case writeup</td>
+                                <td>CILO 1</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>10</td>
+                                <td>Case Discussion- David Dao on United Airlines; Case writeup</td>
+                                <td>CILO 2</td>
+                            </tr>
+                            <tr>
+                                <td>19</td>
+                                <td>10</td>
+                                <td>Pricing Strategy Reflection Essay</td>
+                                <td>CILO 1</td>
+                            </tr>
+                            <tr>
+                                <td>-</td>
+                                <td>20</td>
+                                <td>Research Report on Revenue Management Tools & Technologies Research</td>
+                                <td>CILO 3</td>
+                            </tr>
+                            <tr>
+                                <td>-</td>
+                                <td>10</td>
+                                <td>Class Participation</td>
+                                <td>CILO 2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="tab-content" id="endterm">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Marks</th>
+                                <th>Evaluation Form</th>
+                                <th>CILO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Dynamic Pricing Simulation Project</td>
+                                <td>25</td>
+                                <td>Practical Application</td>
+                                <td>CILO 3</td>
+                            </tr>
+                            <tr>
+                                <td>Case Analysis (individual)</td>
+                                <td>15</td>
+                                <td>Written Analysis</td>
+                                <td>CILO 2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="accordion">
+                <div class="accordion-header">
+                    <span><i class="fas fa-graduation-cap"></i> Attendance & Academic Policies</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion-content">
+                    <h4>Attendance & Punctuality</h4>
+                    <p>Learning is an interactive process. Students are expected to be present in all the classes. Absence is only appropriate in exceptional circumstances. Voluntary activities are never valid reasons for missing any class. Students may refer to the student handbook for regulations covering attendance. Students who do not meet attendance requirements will not be permitted to write the end term examination and will be required to repeat the course with the next batch of students. Late arrival is disruptive to the learning environment; students are expected to be in class before the scheduled commencement time. Students arriving for class after the scheduled commencement time will be turned away unless they have a value to be permitted to attend.</p>
+                    
+                    <h4>Copyright</h4>
+                    <p>The content provided by the faculty in the class is copyrighted. Students are instructed not to distribute or share content used during courses with external entities.</p>
+                    
+                    <h4>Student Code of Ethics</h4>
+                    <p>Each student enrolled in this course accepts personal responsibility to uphold and defend academic integrity and to promote an atmosphere in which all individuals may flourish. The Students' Code of Ethics strives to set a standard of honest behavior that reflects well on students and the school. All students enrolled in these courses are expected to follow the Students' Code of Ethics contained in the student handbook. Unethical and unfair practices adopted by students may lead to penalties such as having to repeat the course or having the student's enrollment cancelled.</p>
+                    
+                    <h4>AI-Generated Content</h4>
+                    <p>The assignments and projects administered to students in this course are to expand the knowledge and thinking abilities of the students on the subject. Students are not allowed to use AI-generated content from tools like ChatGPT for written assignments/ projects work for this class. Using such tools will be considered a violation of Woxsen's Students' Code of Ethics and suspected use will be reported and dealt with in accordance with Woxsen's Students' Code of Ethics. Instructors may use tools like Turnitin to find violations. Please contact the instructor or program director if you have any questions about this policy.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="appendices" class="module">
+            <h2><i class="fas fa-paperclip"></i> Appendices</h2>
+            
+            <div class="appendix">
+                <h3><i class="fas fa-file-alt"></i> Appendix A: Revenue Optimization Case Study Analysis</h3>
+                <p><strong>Objective:</strong> To apply theoretical knowledge of pricing and revenue management to a real-world business scenario.</p>
+                
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <span>Instructions</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Students will be provided with a case study focusing on a company facing revenue optimization challenges. They are required to analyze the case, identify key problems, propose data-driven solutions using PRM techniques, and justify their recommendations.</p>
+                    </div>
+                </div>
+                
+                <h4>Deliverables:</h4>
+                <ul>
+                    <li><strong>Written Report (2000-2500 words):</strong> Detailed analysis, proposed solutions, and justification.</li>
+                    <li><strong>Presentation (15 minutes):</strong> Summary of findings and recommendations to the class.</li>
+                </ul>
+                
+                <p><strong>Submission Deadline:</strong> As announced by the instructor.</p>
+                
+                <h4>Assessment Criteria:</h4>
+                <ol>
+                    <li>Depth of analysis and problem identification (20%)</li>
+                    <li>Relevance and creativity of proposed PRM solutions (20%).</li>
+                    <li>Justification of recommendations with quantitative and qualitative arguments (30%)</li>
+                    <li>Clarity and coherence of the written report and presentation (20%)</li>
+                    <li>Adherence to academic integrity (10 %).</li>
+                </ol>
+            </div>
+            
+            <div class="appendix">
+                <h3><i class="fas fa-chart-line"></i> Appendix B: Dynamic Pricing Project</h3>
+                <p><strong>Objective:</strong> To gain practical experience in implementing and evaluating dynamic pricing strategies in a simulated market environment.</p>
+                
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <span>Instructions</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Students will work in teams to participate in a dynamic pricing simulation. Each team will make pricing decisions for a product or service over several simulated periods, aiming to maximize revenue. Teams will analyze market data, adjust pricing algorithms, and adapt to competitive actions.</p>
+                    </div>
+                </div>
+                
+                <h4>Deliverables:</h4>
+                <ul>
+                    <li><strong>Simulation Performance Report:</strong> Documenting pricing decisions, outcomes, and lessons learned.</li>
+                    <li><strong>Team Presentation:</strong> Discussing strategy, challenges, and successes in the simulation.</li>
+                </ul>
+                
+                <p><strong>Submission Deadline:</strong> As announced by the instructor.</p>
+                
+                <h4>Assessment Criteria:</h4>
+                <ol>
+                    <li>Effectiveness of pricing strategies in maximizing revenue (30%).</li>
+                    <li>Analytical approach to market data and competitive response (30%).</li>
+                    <li>Team collaboration and decision-making process (25%).</li>
+                    <li>Quality of the performance report and presentation (15%)</li>
+                </ol>
+            </div>
+            
+            <div class="appendix">
+                <h3><i class="fas fa-pen-fancy"></i> Appendix C: Pricing Strategy Reflection Essay</h3>
+                <p><strong>Objective:</strong> To encourage critical reflection on the ethical and societal implications of various pricing strategies.</p>
+                
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <span>Instructions</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Students will write a reflective essay on a chosen pricing strategy (e.g., surge pricing, predatory pricing, psychological pricing), discussing its ethical considerations, impact on consumers and society, and potential regulatory challenges. They should draw upon course concepts and external research.</p>
+                    </div>
+                </div>
+                
+                <h4>Deliverables:</h4>
+                <ul>
+                    <li><strong>Reflective Essay (1000-1200 words):</strong> Individual submission.</li>
+                </ul>
+                
+                <p><strong>Submission Deadline:</strong> As announced by the instructor.</p>
+                
+                <h4>Assessment Criteria:</h4>
+                <ol>
+                    <li>Depth of ethical analysis and reflection (25%).</li>
+                    <li>Integration of course concepts and external examples (25%).</li>
+                    <li>Clarity of arguments and coherence of writing (20%).</li>
+                    <li>Originality of thought and critical perspective (30%).</li>
+                </ol>
+            </div>
+            
+            <div class="appendix">
+                <h3><i class="fas fa-tools"></i> Appendix D: Revenue Management Tools & Technologies Research</h3>
+                <p><strong>Objective:</strong> To explore current and emerging technologies and tools used in pricing and revenue management across different industries.</p>
+                
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <span>Instructions</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Students will individually research and present on a specific revenue management software, analytical tools, or technological innovation (e.g., AI in pricing, blockchain for revenue sharing). The presentation should cover its functionalities, industry applications, benefits, and limitations.</p>
+                    </div>
+                </div>
+                
+                <h4>Deliverables:</h4>
+                <ul>
+                    <li><strong>Research Paper (1500 words):</strong> Documenting findings.</li>
+                    <li><strong>Presentation (10 minutes):</strong> Key insights and demonstrations (if applicable).</li>
+                </ul>
+                
+                <p><strong>Submission Deadline:</strong> As announced by the instructor.</p>
+                
+                <h4>Assessment Criteria:</h4>
+                <ol>
+                    <li>Thoroughness of research and understanding of the chosen tool/technology (20%).</li>
+                    <li>Relevance of industry applications and examples (20%).</li>
+                    <li>Clarity and organization of the research paper and presentation (20%).</li>
+                    <li>Critical evaluation of benefits and limitations (20%).</li>
+                    <li>References to credible sources (20%).</li>
+                </ol>
+            </div>
+        </section>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 Woxsen University | School of Business</p>
+        <p>Plot # 1267, Gateway Jubilee Road # 36, Jubilee Hills, Hyderabad – 500033 India</p>
+        <p>Phone: 040 4444 8888 | Email: info@woxsen.edu.in | Website: www.woxsen.edu.in</p>
+    </div>
+
+    <div class="floating-btn back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                
+                // Remove active class from all buttons and content
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding content
+                btn.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Accordion functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                header.classList.toggle('active');
+                const content = header.nextElementSibling;
+                content.classList.toggle('active');
+                
+                // Close other accordions when one is opened
+                if (header.classList.contains('active')) {
+                    accordionHeaders.forEach(h => {
+                        if (h !== header && h.classList.contains('active')) {
+                            h.classList.remove('active');
+                            h.nextElementSibling.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Back to top button
+        const backToTopBtn = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.style.display = 'flex';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Search functionality for sessions
+        const searchInput = document.querySelector('.search-input');
+        const sessionRows = document.querySelectorAll('#sessions-table tbody tr');
+        
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            sessionRows.forEach(row => {
+                const rowText = row.textContent.toLowerCase();
+                if (rowText.includes(searchTerm)) {
+                    row.style.display = '';
+                    
+                    // Highlight matching text
+                    if (searchTerm) {
+                        const cells = row.querySelectorAll('td');
+                        cells.forEach(cell => {
+                            const cellText = cell.textContent;
+                            const regex = new RegExp(searchTerm, 'gi');
+                            const highlightedText = cellText.replace(regex, match => 
+                                `<span class="highlight">${match}</span>`
+                            );
+                            cell.innerHTML = highlightedText;
+                        });
+                    }
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Open first accordion by default
+        if (accordionHeaders.length > 0) {
+            accordionHeaders[0].classList.add('active');
+            accordionHeaders[0].nextElementSibling.classList.add('active');
+        }
+    </script>
+</body>
+</html>
